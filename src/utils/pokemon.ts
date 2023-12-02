@@ -16,9 +16,23 @@ export const getAllPokemon = async (url: string): Promise<PokemonResponse> => {
   return data;
 };
 
-export const getPokemon = async (url: string): Promise<any> => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+export type PokemonData = {
+  name: string;
+  id: number;
+  height: number;
+  weight: number;
+  sprites: {
+    front_default: string;
+  };
+  types: {
+    type: {
+      name: string;
+    };
+  }[];
 };
 
+export const getPokemon = async (url: string): Promise<PokemonData> => {
+  const response = await fetch(url);
+  const data: PokemonData = await response.json();
+  return data;
+};

@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { getAllPokemon, getPokemon, Pokemon } from "./utils/pokemon";
+import {
+  getAllPokemon,
+  getPokemon,
+  Pokemon,
+  PokemonData,
+} from "./utils/pokemon";
 import Card from "./components/Card/Card";
 
 function App() {
@@ -10,7 +15,7 @@ function App() {
 
   const loadPokemon = async (data: Pokemon[]): Promise<void> => {
     const _pokemonData = await Promise.all(
-      data.map(async (pokemon: Pokemon): Promise<any> => {
+      data.map(async (pokemon: Pokemon): Promise<PokemonData> => {
         const pokemonRecord = await getPokemon(pokemon.url);
         return pokemonRecord;
       })
