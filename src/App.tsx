@@ -11,7 +11,7 @@ import Card from "./components/Card/Card";
 function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
   const [loading, setLoading] = useState(true);
-  const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
+  const [pokemonData, setPokemonData] = useState<PokemonData[]>([]);
 
   const loadPokemon = async (data: Pokemon[]): Promise<void> => {
     const _pokemonData = await Promise.all(

@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { Pokemon } from "../../utils/pokemon";
+import { PokemonData } from "../../utils/pokemon";
 
 interface CardProps {
-  pokemon: Pokemon;
+  pokemon: PokemonData;
 }
 
 const Card: FC<CardProps> = ({ pokemon }) => {
