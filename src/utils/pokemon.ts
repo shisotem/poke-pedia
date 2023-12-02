@@ -29,6 +29,11 @@ export type PokemonData = {
       name: string;
     };
   }[];
+  abilities: {
+    ability: {
+      name: string;
+    };
+  }[];
 };
 
 export const getPokemon = async (url: string): Promise<PokemonData> => {
