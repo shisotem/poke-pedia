@@ -7,6 +7,7 @@ import {
   PokemonData,
 } from "./utils/pokemon";
 import Card from "./components/Card/Card";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <>
+      <Navbar />
       {loading ? (
         <h1>Loading...</h1>
       ) : (
