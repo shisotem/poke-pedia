@@ -14,6 +14,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState<PokemonData[]>([]);
   const [nextUrl, setNextUrl] = useState("");
+  const [prevUrl, setPrevUrl] = useState("");
 
   const loadPokemon = async (data: Pokemon[]): Promise<void> => {
     const _pokemonData = await Promise.all(
@@ -30,6 +31,7 @@ function App() {
       const response = await getAllPokemon(initialURL);
       await loadPokemon(response.results);
       setNextUrl(response.next);
+      setPrevUrl(response.previous);
       setLoading(false);
     };
     fetchPokemonData();
@@ -40,10 +42,19 @@ function App() {
     const response = await getAllPokemon(nextUrl);
     await loadPokemon(response.results);
     setNextUrl(response.next);
+    setPrevUrl(response.previous);
     setLoading(false);
   };
 
-  const handlePrevPage = async () => {};
+  const handlePrevPage = async () => {
+    if (prevUrl === null) return;
+    setLoading(true);
+    const response = await getAllPokemon(prevUrl);
+    await loadPokemon(response.results);
+    setNextUrl(response.next);
+    setPrevUrl(response.previous);
+    setLoading(false);
+  };
 
   return (
     <>
