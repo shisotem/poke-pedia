@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { PokemonData } from "../../utils/pokemon";
+import "./Card.css";
 
 interface CardProps {
   pokemon: PokemonData;
