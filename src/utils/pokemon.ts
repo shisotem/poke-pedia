@@ -5,7 +5,7 @@ export type Pokemon = {
 
 type PokemonResponse = {
   count: number;
-  next: string;
+  next: string | null;
   previous: string | null;
   results: Pokemon[];
 };

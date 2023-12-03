@@ -30,29 +30,30 @@ function App() {
     const fetchPokemonData = async () => {
       const response = await getAllPokemon(initialURL);
       await loadPokemon(response.results);
-      setNextUrl(response.next);
-      setPrevUrl(response.previous);
+      !response.next || setNextUrl(response.next);
+      !response.previous || setPrevUrl(response.previous);
       setLoading(false);
     };
     fetchPokemonData();
   }, []);
 
   const handleNextPage = async () => {
+    if (!nextUrl) return;
     setLoading(true);
     const response = await getAllPokemon(nextUrl);
     await loadPokemon(response.results);
-    setNextUrl(response.next);
-    setPrevUrl(response.previous);
+    !response.next || setNextUrl(response.next);
+    !response.previous || setPrevUrl(response.previous);
     setLoading(false);
   };
 
   const handlePrevPage = async () => {
-    if (prevUrl === null) return;
+    if (!prevUrl) return;
     setLoading(true);
     const response = await getAllPokemon(prevUrl);
     await loadPokemon(response.results);
-    setNextUrl(response.next);
-    setPrevUrl(response.previous);
+    !response.next || setNextUrl(response.next);
+    !response.previous || setPrevUrl(response.previous);
     setLoading(false);
   };
 
